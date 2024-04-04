@@ -1,0 +1,30 @@
+.chat-box {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+.message {
+    background-color: #f2f2f2;
+    padding: 5px 10px;
+    border-radius: 30px;
+    margin-bottom: 5px;
+    align-self: flex-start;
+}
+
+.message.sent {
+    background-color: #4aa1ff;
+    color: #fff;
+    align-self: flex-end;
+}
+
+.message.received {
+    background-color: #f2f2f2;
+    color: #000;
+    align-self: flex-start;
+}
