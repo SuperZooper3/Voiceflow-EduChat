@@ -21,11 +21,12 @@ const vfInteract = async (user, message) => {
     method: 'POST',
     body: JSON.stringify(payload),
   });
+
   const postRes = await data.json();
-  const textResponses = [];
+  let textResponses = '';
   for (let i = 0; i < postRes.length; i++) {
     if (postRes[i].type === 'text') {
-      textResponses.push(postRes[i].payload.message);
+      textResponses += postRes[i].payload.message + '\n';
     }
   }
   return textResponses;

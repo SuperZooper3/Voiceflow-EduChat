@@ -5,7 +5,7 @@ import {vfInteract} from './VoiceflowInteractions';
 import PropTypes from 'prop-types';
 
 
-const InputBox = ({addMessage}) => {
+const InputBox = ({addMessage, userName}) => {
   const [inputValue, setInputValue] = useState('');
 
   const handleChange = (event) => {
@@ -16,7 +16,7 @@ const InputBox = ({addMessage}) => {
     event.preventDefault();
     addMessage(inputValue);
     setInputValue('');
-    const VFAnswers = vfInteract('test', inputValue);
+    const VFAnswers = vfInteract(userName, inputValue);
 
     VFAnswers.then((res) => {
       console.log(res);
@@ -44,6 +44,7 @@ const InputBox = ({addMessage}) => {
 
 InputBox.propTypes = {
   addMessage: PropTypes.func,
+  userName: PropTypes.string,
 };
 
 export default InputBox;
