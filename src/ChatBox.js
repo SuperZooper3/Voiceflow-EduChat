@@ -6,7 +6,7 @@ const prepMessageBody = (message) => {
   return (
     <div>
       {message.split('\n').map((line, i) => {
-        return <p key={i}>{line}</p>;
+        return line ? <div className='messageLine' key={i}>{line}</div>: null;
       })}
     </div>
   );
