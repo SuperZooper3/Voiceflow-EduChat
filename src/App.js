@@ -5,7 +5,7 @@ import Header from './Header';
 
 const ChatApp = () => {
   const [messages, setMessages] = useState([]);
-  const [sessionSlug, setSessionSlug] = useState(() => {
+  const [sessionSlug] = useState(() => {
     return Math.random().toString(36).substring(2, 15);
   });
 

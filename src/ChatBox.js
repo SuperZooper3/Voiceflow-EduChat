@@ -2,7 +2,18 @@ import React from 'react';
 import './ChatBox.css'; // Import CSS file for styling
 import PropTypes from 'prop-types';
 
+const prepMessageBody = (message) => {
+  return (
+    <div>
+      {message.split('\n').map((line, i) => {
+        return <p key={i}>{line}</p>;
+      })}
+    </div>
+  );
+};
+
 const ChatBox = ({messages}) => {
+  console.log(messages);
   return (
     <div className="chat-box">
       {messages.map((message, index) => (
@@ -10,7 +21,7 @@ const ChatBox = ({messages}) => {
           className={`message ${index % 2 === 0 ? 'sent' : 'recieved'}`}
           key={index}
         >
-          {message}
+          {prepMessageBody(message)}
         </div>
       ))}
     </div>
