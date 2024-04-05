@@ -13,9 +13,18 @@ const prepMessageBody = (message) => {
 };
 
 const ChatBox = ({messages}) => {
+  const boxRef = React.useRef(null);
+
+  React.useEffect(() => {
+    boxRef.current.scrollTo({
+      top: boxRef.current.scrollHeight,
+      behavior: 'smooth',
+    });
+  }, [messages]);
+
   console.log(messages);
   return (
-    <div className="chat-box">
+    <div className="chat-box" ref={boxRef}>
       {messages.map((message, index) => (
         <div
           className={`message ${index % 2 === 0 ? 'sent' : 'recieved'}`}
