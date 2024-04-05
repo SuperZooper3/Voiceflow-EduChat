@@ -1,3 +1,8 @@
+/* for the entire thing, set the font to cambria */
+* {
+  font-family: Georgia, serif;
+}
+
 .App {
   text-align: center;
 }
@@ -32,7 +37,12 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.app-wrapper {
+  padding: 20px;
 }

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import ChatBox from './ChatBox';
 import InputBox from './InputBox';
 import Header from './Header';
+import './App.css';
 
 const ChatApp = () => {
   const [messages, setMessages] = useState([]);
@@ -14,7 +15,7 @@ const ChatApp = () => {
   };
 
   return (
-    <div>
+    <div className='app-wrapper'>
       <Header />
       <ChatBox messages={messages} />
       <InputBox addMessage={addMessage} userName={sessionSlug}/>

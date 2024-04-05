@@ -1,6 +1,4 @@
 .chat-box {
-    border: 1px solid #ccc;
-    border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
     display: flex;
@@ -31,4 +29,5 @@
 
 .messageLine {
     padding: 5px;
+    font-size: larger;
 }
