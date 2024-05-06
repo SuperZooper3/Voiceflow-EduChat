@@ -14,13 +14,15 @@ const InputBox = ({addMessage, userName}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addMessage(inputValue);
+    addMessage({type: 'user', content: inputValue});
     setInputValue('');
     const VFAnswers = vfInteract(userName, inputValue);
 
     VFAnswers.then((res) => {
-      console.log(res);
-      addMessage(res);
+      console.log('Response:', res);
+      for (let i = 0; i < res.length; i++) {
+        addMessage({type: 'response', content: res[i]});
+      }
     }, (err) => {
       console.log(err);
     });

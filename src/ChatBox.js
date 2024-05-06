@@ -27,10 +27,10 @@ const ChatBox = ({messages}) => {
     <div className="chat-box" ref={boxRef}>
       {messages.map((message, index) => (
         <div
-          className={`message ${index % 2 === 0 ? 'sent' : 'recieved'}`}
+          className={`message ${message.type === 'user' ? 'sent' : 'recieved'}`}
           key={index}
         >
-          {prepMessageBody(message)}
+          {prepMessageBody(message.content)}
         </div>
       ))}
     </div>

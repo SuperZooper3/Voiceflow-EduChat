@@ -23,13 +23,13 @@ const vfInteract = async (user, message) => {
   });
 
   const postRes = await data.json();
-  let textResponses = '';
+  const botResponses = [];
   for (let i = 0; i < postRes.length; i++) {
     if (postRes[i].type === 'text') {
-      textResponses += postRes[i].payload.message + '\n';
+      botResponses.push(postRes[i].payload.message);
     }
   }
-  return textResponses;
+  return botResponses;
 };
 
 export {vfInteract};
