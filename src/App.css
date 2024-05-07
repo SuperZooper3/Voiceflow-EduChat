@@ -46,3 +46,18 @@
   padding: 20px;
   background-color: white;
 }
+
+.body-wrapper {
+  display: flex;
+  flex-direction: horizontal;
+}
+
+.body-half {
+  flex: 1;
+  padding: 20px;
+}
+
+.article-wrapper {
+  height: calc(100vh - 200px);
+  overflow-y: auto;
+}
