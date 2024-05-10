@@ -12,7 +12,7 @@ const prepMessageSent = (message) => {
   );
 };
 
-const prepMessageRecieved = (trace) => {
+const prepMessageRecieved = (trace, pressButton) => {
   if (trace.type === 'text') {
     return (
       <div>
@@ -35,8 +35,23 @@ const prepMessageRecieved = (trace) => {
         </div>
       );
     }
+  } else if (trace.type === 'choice') {
+    return (
+      <div>
+        {trace.payload.buttons.map((button, i) => {
+          return (
+            <button key={i} onClick={() => {
+              console.log('Button pressed:', button);
+              pressButton(button);
+            }}>
+              {button.name}
+            </button>
+          );
+        })}
+      </div>
+    );
   } else if (trace.type === 'path') {
-    return;
+    return null;
   } else {
     return (
       <div>
@@ -46,7 +61,7 @@ const prepMessageRecieved = (trace) => {
   }
 };
 
-const ChatBox = ({messages}) => {
+const ChatBox = ({messages, choices, pressButton}) => {
   const boxRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -65,9 +80,10 @@ const ChatBox = ({messages}) => {
             {prepMessageSent(message.content)}
           </div>
         ) : (
-          <div className="message recieved" key={index}>
-            {prepMessageRecieved(message.content)}
-          </div>
+          prepMessageRecieved(message.content, pressButton) === null ? null :
+            <div className="message recieved" key={index}>
+              {prepMessageRecieved(message.content, pressButton)}
+            </div>
         )
       ))}
     </div>
@@ -76,6 +92,8 @@ const ChatBox = ({messages}) => {
 
 ChatBox.propTypes = {
   messages: PropTypes.arrayOf(PropTypes.string),
+  choices: PropTypes.object,
+  pressButton: PropTypes.func,
 };
 
 export default ChatBox;

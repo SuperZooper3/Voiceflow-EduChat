@@ -16,7 +16,8 @@ const InputBox = ({addMessage, userName}) => {
     event.preventDefault();
     addMessage({sender: 'user', content: inputValue});
     setInputValue('');
-    const VFAnswers = vfInteract(userName, inputValue);
+    const userAction = {type: 'text', payload: inputValue};
+    const VFAnswers = vfInteract(userName, userAction);
 
     VFAnswers.then((res) => {
       console.log('Response:', res);
@@ -27,7 +28,7 @@ const InputBox = ({addMessage, userName}) => {
       console.log(err);
     });
 
-    console.log(VFAnswers);
+    console.log('VFAnswers: ', VFAnswers);
     setInputValue('');
   };
 
