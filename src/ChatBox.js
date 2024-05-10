@@ -21,10 +21,20 @@ const prepMessageRecieved = (trace) => {
         })}
       </div>
     );
-  } else if (trace.type === 'image') {
-    return (
-      <img src={trace.payload.url} alt="VF Image" />
-    );
+  } else if (trace.type === 'visual') {
+    if (trace.payload.visualType === 'image') {
+      return (
+        <img className="vf-image"
+          src={trace.payload.image} alt="VF Image"
+        />
+      );
+    } else {
+      return (
+        <div>
+          {JSON.stringify(trace)}
+        </div>
+      );
+    }
   } else if (trace.type === 'path') {
     return;
   } else {

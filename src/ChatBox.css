@@ -31,3 +31,8 @@
     padding: 5px;
     font-size: larger;
 }
+
+.vf-image {
+    width: auto;
+    height: 400px;
+}
