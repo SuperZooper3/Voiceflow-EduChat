@@ -5,9 +5,9 @@ const vfInteract = async (user, message) => {
   console.log(interractionUrl, message);
 
   const payload = {
-    'action': {
-      'type': 'text',
-      'payload': message,
+    action: {
+      type: 'text',
+      payload: message,
     },
   };
 
@@ -23,13 +23,13 @@ const vfInteract = async (user, message) => {
   });
 
   const postRes = await data.json();
-  const botResponses = [];
-  for (let i = 0; i < postRes.length; i++) {
-    if (postRes[i].type === 'text') {
-      botResponses.push(postRes[i].payload.message);
-    }
-  }
-  return botResponses;
+  // const botResponses = [];
+  // for (let i = 0; i < postRes.length; i++) {
+  //   if (postRes[i].type === 'text') {
+  //     botResponses.push(postRes[i].payload.message);
+  //   }
+  // }
+  return postRes;
 };
 
 export {vfInteract};
