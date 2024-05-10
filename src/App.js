@@ -35,13 +35,16 @@ const ChatApp = () => {
     const VFAnswers = vfInteract(sessionSlug, button.request);
 
     VFAnswers.then((res) => {
-      console.log('Response:', res);
+      // console.log('Response:', res);
       for (let i = 0; i < res.length; i++) {
         addMessage({sender: 'response', content: res[i]});
       }
     }, (err) => {
       console.log(err);
     });
+
+    // clear choices
+    setChoices({});
   };
 
   return (

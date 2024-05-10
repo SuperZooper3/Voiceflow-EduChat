@@ -36,20 +36,7 @@ const prepMessageRecieved = (trace, pressButton) => {
       );
     }
   } else if (trace.type === 'choice') {
-    return (
-      <div>
-        {trace.payload.buttons.map((button, i) => {
-          return (
-            <button key={i} onClick={() => {
-              console.log('Button pressed:', button);
-              pressButton(button);
-            }}>
-              {button.name}
-            </button>
-          );
-        })}
-      </div>
-    );
+    return null;
   } else if (trace.type === 'path') {
     return null;
   } else {
@@ -74,6 +61,7 @@ const ChatBox = ({messages, choices, pressButton}) => {
   console.log(messages);
   return (
     <div className="chat-box" ref={boxRef}>
+
       {messages.map((message, index) => (
         message.sender === 'user' ? (
           <div className="message sent" key={index}>
@@ -86,6 +74,18 @@ const ChatBox = ({messages, choices, pressButton}) => {
             </div>
         )
       ))}
+
+      <div className='choice-wrapper'>
+        {Object.keys(choices).map((key, index) => (
+          <button key={index} onClick={() => {
+            console.log('Button pressed:', choices[key]);
+            pressButton(choices[key]);
+          }}>
+            {choices[key].name}
+          </button>
+        ))}
+      </div>
+
     </div>
   );
 };
