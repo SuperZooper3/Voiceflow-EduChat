@@ -77,7 +77,7 @@ const ChatBox = ({messages, choices, pressButton}) => {
 
       <div className='choice-wrapper'>
         {Object.keys(choices).map((key, index) => (
-          <button key={index} onClick={() => {
+          <button className="choice-button" key={index} onClick={() => {
             console.log('Button pressed:', choices[key]);
             pressButton(choices[key]);
           }}>

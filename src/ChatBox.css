@@ -36,3 +36,15 @@
     width: auto;
     height: 400px;
 }
+
+.choice-button {
+    font-size: larger;
+    background-color: #00b37d;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    border-color: #00815a;
+}
