@@ -2,7 +2,7 @@ import React from 'react';
 import ChatBox from './ChatBox';
 import InputBox from './InputBox';
 import Header from './Header';
-import Article from './Article';
+import {Article, useArticleState} from './Article';
 
 import useConversationState from './ConversationState';
 import './App.css';
@@ -11,12 +11,14 @@ const ChatApp = () => {
   const {messages, choices, userSendAction, pressButton} =
     useConversationState();
 
+  const {article, handleArticleSelect} = useArticleState();
+
   return (
     <div className='app-wrapper'>
-      <Header />
+      <Header handleArticleSelect={handleArticleSelect} />
       <div className='body-wrapper'>
         <div className='body-half'>
-          <Article />
+          <Article article={article} />
         </div>
         <div className='body-half'>
           <div className='chat-wrapper'>

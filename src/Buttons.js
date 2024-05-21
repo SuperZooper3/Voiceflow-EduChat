@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ButtonBox = ({choices}) => {
-  console.log(choices);
   return (
     <div className='choice-wrapper'>
       {Object.keys(choices).map((key, index) => (
