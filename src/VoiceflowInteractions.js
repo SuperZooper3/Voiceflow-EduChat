@@ -2,7 +2,6 @@ const API_KEY = 'VF.DM.660dc8d6df5b4249cccd010b.tRWxpTLoHqZZ2HNp';
 
 const vfInteract = async (user, userAction) => {
   const interractionUrl = `https://general-runtime.voiceflow.com/state/user/${user}/interact`;
-  console.log(interractionUrl, userAction);
 
   const payload = {
     action: userAction,

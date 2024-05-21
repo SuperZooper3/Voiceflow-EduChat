@@ -12,7 +12,7 @@ const prepMessageSent = (message) => {
   );
 };
 
-const prepMessageRecieved = (trace, pressButton) => {
+const prepMessageRecieved = (trace) => {
   if (trace.type === 'text') {
     return (
       <div>
@@ -39,6 +39,12 @@ const prepMessageRecieved = (trace, pressButton) => {
     return null;
   } else if (trace.type === 'path') {
     return null;
+  } else if (trace.type === 'color_text') {
+    return (
+      <div className='messageLine' style={{color: trace.payload.color}}>
+        {trace.payload.text}
+      </div>
+    );
   } else {
     return (
       <div>
@@ -68,9 +74,9 @@ const ChatBox = ({messages, choices, pressButton}) => {
             {prepMessageSent(message.content)}
           </div>
         ) : (
-          prepMessageRecieved(message.content, pressButton) === null ? null :
+          prepMessageRecieved(message.content) === null ? null :
             <div className="message recieved" key={index}>
-              {prepMessageRecieved(message.content, pressButton)}
+              {prepMessageRecieved(message.content)}
             </div>
         )
       ))}
