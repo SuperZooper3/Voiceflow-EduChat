@@ -1,6 +1,7 @@
 import React from 'react';
 import './ChatBox.css'; // Import CSS file for styling
 import PropTypes from 'prop-types';
+import {ButtonBox} from './Buttons';
 
 const prepMessageSent = (message) => {
   return (
@@ -66,7 +67,6 @@ const ChatBox = ({messages, choices, pressButton}) => {
 
   return (
     <div className="chat-box" ref={boxRef}>
-
       {messages.map((message, index) => (
         message.sender === 'user' ? (
           <div className="message sent" key={index}>
@@ -79,23 +79,13 @@ const ChatBox = ({messages, choices, pressButton}) => {
             </div>
         )
       ))}
-
-      <div className='choice-wrapper'>
-        {Object.keys(choices).map((key, index) => (
-          <button className="choice-button" key={index} onClick={() => {
-            pressButton(choices[key]);
-          }}>
-            {choices[key].name}
-          </button>
-        ))}
-      </div>
-
+      <ButtonBox choices={choices} />
     </div>
   );
 };
 
 ChatBox.propTypes = {
-  messages: PropTypes.arrayOf(PropTypes.string),
+  messages: PropTypes.arrayOf(PropTypes.object),
   choices: PropTypes.object,
   pressButton: PropTypes.func,
 };

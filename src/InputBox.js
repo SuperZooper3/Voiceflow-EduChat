@@ -1,11 +1,10 @@
 import {SendHorizontal} from 'lucide-react';
 import React, {useState} from 'react';
 import './InputBox.css'; // Import CSS file for styling
-import {vfInteract} from './VoiceflowInteractions';
 import PropTypes from 'prop-types';
 
 
-const InputBox = ({addMessage, userName}) => {
+const InputBox = ({userSendAction}) => {
   const [inputValue, setInputValue] = useState('');
 
   const handleChange = (event) => {
@@ -14,20 +13,9 @@ const InputBox = ({addMessage, userName}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addMessage({sender: 'user', content: inputValue});
     setInputValue('');
     const userAction = {type: 'text', payload: inputValue};
-    const VFAnswers = vfInteract(userName, userAction);
-
-    VFAnswers.then((res) => {
-      for (let i = 0; i < res.length; i++) {
-        addMessage({sender: 'response', content: res[i]});
-      }
-    }, (err) => {
-      console.log(err);
-    });
-
-    setInputValue('');
+    userSendAction(inputValue, userAction);
   };
 
   return (
@@ -44,8 +32,7 @@ const InputBox = ({addMessage, userName}) => {
 };
 
 InputBox.propTypes = {
-  addMessage: PropTypes.func,
-  userName: PropTypes.string,
+  userSendAction: PropTypes.func,
 };
 
 export default InputBox;

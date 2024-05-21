@@ -5,34 +5,36 @@ import Header from './Header';
 import {vfInteract} from './VoiceflowInteractions';
 import './App.css';
 
-const ChatApp = () => {
+const useConversationState = (sessionSlug) => {
   const [messages, setMessages] = useState([]);
-  // The choices a user can make from buttons or a choice step
   const [choices, setChoices] = useState({});
-  const [sessionSlug] = useState(() => {
-    return Math.random().toString(36).substring(2, 15);
-  });
-
-  const addChoice = (choice) => {
-    setChoices((prevChoices) => ({...prevChoices, ...choice}));
-  };
 
   const addMessage = (message) => {
     // process received messages, adding choices to state,
     if (message.sender === 'response') {
       if (message.content.type === 'choice') {
         for (const button of message.content.payload?.buttons) {
-          addChoice({[button.request.type]: button});
+          addChoice({[button.request.type]: {...button, handler: pressButton}});
         }
       }
     }
     setMessages((prevMessages) => [...prevMessages, message]);
   };
 
-  // FIXME: Refactor this function to centralise the button
+  const addChoice = (choice) => {
+    setChoices((prevChoices) => ({...prevChoices, ...choice}));
+  };
+
   const pressButton = (button) => {
-    addMessage({sender: 'user', content: button.name});
-    const VFAnswers = vfInteract(sessionSlug, button.request);
+    userSendAction(button.name, button.request);
+  };
+
+  // The choices a user can make from buttons or a choice step
+  // Inside, they contain the button's name (.name), a handler (.handler)
+  // and any other data that will be passed to the handler
+  const userSendAction = (displayText, interactPayload) => {
+    addMessage({sender: 'user', content: displayText});
+    const VFAnswers = vfInteract(sessionSlug, interactPayload);
 
     VFAnswers.then((res) => {
       for (let i = 0; i < res.length; i++) {
@@ -46,6 +48,16 @@ const ChatApp = () => {
     setChoices({});
   };
 
+  return {messages, choices, userSendAction, pressButton};
+};
+
+const ChatApp = () => {
+  const [sessionSlug] = useState(() => {
+    return Math.random().toString(36).substring(2, 15);
+  });
+  const {messages, choices, userSendAction, pressButton} =
+    useConversationState(sessionSlug);
+
   return (
     <div className='app-wrapper'>
       <Header />
@@ -53,8 +65,11 @@ const ChatApp = () => {
         messages={messages}
         choices={choices}
         pressButton={pressButton}
+        userSendAction={userSendAction}
       />
-      <InputBox addMessage={addMessage} userName={sessionSlug} />
+      <InputBox
+        userSendAction={userSendAction}
+      />
     </div>
   );
 };
