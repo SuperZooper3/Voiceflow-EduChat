@@ -1,4 +1,3 @@
-/* for the entire thing, set the font to cambria */
 * {
   font-family: Georgia, serif;
 }
@@ -10,12 +9,6 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -32,17 +25,17 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .app-wrapper {
   padding: 20px;
   background-color: white;
+}
+
+.body-wrapper {
+  display: flex;
+  flex-direction: horizontal;
+}
+
+.body-half {
+  flex: 1;
+  padding: 20px;
 }

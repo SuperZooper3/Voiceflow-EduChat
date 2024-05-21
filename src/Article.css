@@ -1,0 +1,22 @@
+.article-wrapper {
+    height: calc(100vh - 200px);
+    overflow-y: auto;
+    word-break: break-word;
+    padding: 10px;
+}
+  
+.article-text {
+    font-size: 25px;
+    padding-bottom: 20px;
+    line-height: 1.5;
+}
+
+.article-image {
+    width: 80%;
+    height: auto;
+    padding-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
