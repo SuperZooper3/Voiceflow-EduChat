@@ -1,0 +1,12 @@
+[
+    {
+        "id": "elephants",
+        "displayname": "Elephants",
+        "filename": "elephants.json"
+    },
+    {
+        "id": "giraffes",
+        "displayname": "Giraffes",
+        "filename": "giraffes.json"
+    }
+]

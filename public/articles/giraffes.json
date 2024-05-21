@@ -1,0 +1,45 @@
+{
+    "title": "Giraffes",
+    "body":[
+        {
+            "type": "text",
+            "content": "Giraffes are tall mammals belonging to the genus Giraffa and the family Giraffidae. They are native to Africa and are the tallest living terrestrial animals. Currently, there are four recognized species: the Northern giraffe, the Southern giraffe, the Masai giraffe, and the Reticulated giraffe. Giraffes are easily identified by their long necks, distinctive coat patterns, and long legs."
+        },
+        {
+            "type": "image",
+            "link": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Giraffe_Mikumi_National_Park.jpg",
+            "caption": "Northern giraffe"
+        },
+        {
+            "type": "text",
+            "content": "Giraffes are herbivores, primarily feeding on leaves, flowers, fruits, and twigs of trees and shrubs. They prefer habitats such as savannas, grasslands, and open woodlands where acacia trees are plentiful. Giraffes have a unique circulatory system that enables them to manage the blood flow to their brain when they raise and lower their heads. This adaptation helps them avoid fainting due to sudden changes in blood pressure."
+        },
+        {
+            "type": "image",
+            "link": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Giraffe_standing.jpg/300px-Giraffe_standing.jpg",
+            "caption": "Southern giraffe"
+        },
+        {
+            "type": "text",
+            "content": "The Southern giraffe is distinguished by its irregular, star-shaped spots that cover its entire body. These giraffes are found in South Africa, Namibia, Botswana, Zimbabwe, and Mozambique."
+        },
+        {
+            "type": "image",
+            "link": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/GiraffaCamelopardalisTippelskirchi-Masaai-Mara.JPG/300px-GiraffaCamelopardalisTippelskirchi-Masaai-Mara.JPG",
+            "caption": "Masai giraffe"
+        },
+        {
+            "type": "text",
+            "content": "The Masai giraffe, also known as the Kilimanjaro giraffe, has jagged, vine-like spots and is primarily found in Kenya and Tanzania. It is the largest-bodied giraffe species and is known for its distinctive coat pattern."
+        },
+        {
+            "type": "image",
+            "link": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Giraffa_camelopardalis_reticulata_01%2C_flip.jpg/300px-Giraffa_camelopardalis_reticulata_01%2C_flip.jpg",
+            "caption": "Reticulated giraffe"
+        },
+        {
+            "type": "text",
+            "content": "The Reticulated giraffe, also known as the Somali giraffe, has a net-like pattern of narrow white lines separating dark patches. It inhabits the arid regions of northern Kenya, southern Ethiopia, and Somalia."
+        }
+    ]
+}
