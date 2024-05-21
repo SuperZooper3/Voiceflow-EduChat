@@ -64,7 +64,6 @@ const ChatBox = ({messages, choices, pressButton}) => {
     });
   }, [messages]);
 
-  console.log(messages);
   return (
     <div className="chat-box" ref={boxRef}>
 
@@ -84,7 +83,6 @@ const ChatBox = ({messages, choices, pressButton}) => {
       <div className='choice-wrapper'>
         {Object.keys(choices).map((key, index) => (
           <button className="choice-button" key={index} onClick={() => {
-            console.log('Button pressed:', choices[key]);
             pressButton(choices[key]);
           }}>
             {choices[key].name}
