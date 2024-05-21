@@ -5,7 +5,7 @@ import article from './article.json';
 const Article = ({}) => {
   return (
     <div className='article-wrapper'>
-      <h2>{article.title}</h2>
+      <h1>{article.title}</h1>
       {article.body.map((paragraph, index) => (
         paragraph.type === 'text' ?
             <p className="article-text" key={index}>{paragraph.content}</p> :

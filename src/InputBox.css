@@ -15,7 +15,7 @@
 
 .input-box button {
     padding: 10px 20px;
-    background-color: #00b37d;
+    background-color: #FFAC2F;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -23,5 +23,5 @@
 }
 
 .input-box button:hover {
-    background-color: #009468;
+    background-color: #d88f22;
 }

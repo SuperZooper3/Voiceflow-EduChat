@@ -1,10 +1,11 @@
 import React from 'react';
+import './App.css';
 
 const Header = ({}) => {
   return (
-    <header>
+    <div className='app-header'>
       <h1>EduChat</h1>
-    </header>
+    </div>
   );
 };
 
