@@ -8,5 +8,9 @@
         "id": "giraffes",
         "displayname": "Giraffes",
         "filename": "giraffes.json"
+    }, {
+        "id": "llm_intent",
+        "displayname": "LLM Intents",
+        "filename": "llm_intent.json"
     }
 ]

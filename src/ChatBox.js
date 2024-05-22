@@ -2,6 +2,7 @@ import React from 'react';
 import './ChatBox.css'; // Import CSS file for styling
 import PropTypes from 'prop-types';
 import {ButtonBox} from './Buttons';
+import TypingIndicator from './TypingIndicator';
 
 const prepMessageSent = (message) => {
   return (
@@ -47,7 +48,7 @@ const prepMessageRecieved = (trace) => {
     trace.type === 'path' ||
     trace.type === 'suggest_question_buttons'
   ) {
-    return null;
+    return (null);
   } else {
     return (
       <div>
@@ -57,7 +58,7 @@ const prepMessageRecieved = (trace) => {
   }
 };
 
-const ChatBox = ({messages, choices, pressButton}) => {
+const ChatBox = ({messages, choices, isAwaitingResponse}) => {
   const boxRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -81,6 +82,10 @@ const ChatBox = ({messages, choices, pressButton}) => {
             </div>
         )
       ))}
+      {isAwaitingResponse ?
+      <div className="message recieved">
+        <TypingIndicator />
+      </div> : null}
       <ButtonBox choices={choices} />
     </div>
   );
@@ -89,7 +94,7 @@ const ChatBox = ({messages, choices, pressButton}) => {
 ChatBox.propTypes = {
   messages: PropTypes.arrayOf(PropTypes.object),
   choices: PropTypes.object,
-  pressButton: PropTypes.func,
+  isAwaitingResponse: PropTypes.bool,
 };
 
 export default ChatBox;

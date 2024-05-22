@@ -18,16 +18,14 @@ const useArticleState = (userSendAction, userUpdateVariables) => {
       if (item.type === 'text') {
         return item.content;
       } else if (item.type === 'image') {
-        return item.caption;
+        return `**IMAGE. CAPTION: ${item.caption}**`;
       } else {
         return '';
       }
     }).join('\n');
-    const currentParagraph = articleData.body[0].content;
-    console.log(articleText, currentParagraph);
     await userUpdateVariables({
       article_body: articleText,
-      current_paragraphs: currentParagraph});
+    });
     userSendAction(
         null,
         {type: 'intent', payload: {intent: {name: 'suggest_buttons'}}},

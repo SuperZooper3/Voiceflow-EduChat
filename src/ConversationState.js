@@ -7,6 +7,7 @@ const useConversationState = () => {
   const [sessionSlug, setSessionSlug] = useState(() => {
     null;
   });
+  const [isAwaitingResponse, setIsAwaitingResponse] = useState(false);
 
   // Set the initial sessionSlug
   React.useEffect(() => {
@@ -32,7 +33,13 @@ const useConversationState = () => {
           addChoice({[button.request.type]: {...button, handler: pressButton}});
         }
       } else if (message.content.type === 'suggest_question_buttons') {
-        for (const [key, value] of Object.entries(message.content.payload)) {
+        // check if the payload is a string or json
+        console.log(message.content.payload);
+        let payload = message.content.payload;
+        if (typeof message.content.payload === 'string') {
+          payload = JSON.parse(message.content.payload);
+        }
+        for (const [key, value] of Object.entries(payload)) {
           addChoice({
             [key]: {name: value, handler: pressSuggestedQuestionButton},
           });
@@ -58,6 +65,7 @@ const useConversationState = () => {
   // Inside, they contain the button's name (.name), a handler (.handler)
   // and any other data that will be passed to the handler
   const userSendAction = (displayText, interactPayload) => {
+    setIsAwaitingResponse(true);
     if (displayText !== null) {
       addMessage({sender: 'user', content: displayText});
     }
@@ -67,6 +75,7 @@ const useConversationState = () => {
       for (let i = 0; i < res.length; i++) {
         addMessage({sender: 'response', content: res[i]});
       }
+      setIsAwaitingResponse(false);
     }, (err) => {
       console.log(err);
     });
@@ -79,7 +88,14 @@ const useConversationState = () => {
     return vfUpdateVariables(sessionSlug, variables);
   };
 
-  return {messages, choices, userSendAction, userUpdateVariables, pressButton};
+  return {
+    messages,
+    choices,
+    userSendAction,
+    userUpdateVariables,
+    pressButton,
+    isAwaitingResponse,
+  };
 };
 
 export default useConversationState;

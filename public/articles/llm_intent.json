@@ -1,0 +1,95 @@
+{
+    "title": "Intent Classification using LLMs",
+    "body": [
+        {
+            "type": "text",
+            "content": "Intent classification using a hybrid of Large Language Models (LLM) and Voiceflow's Natural Language Understanding (NLU) model"
+        },
+        {
+            "type": "text",
+            "content": "The LLM-based intent classifier introduces a novel hybrid methodology, blending traditional Natural Language Understanding (NLU) with the expansive capabilities of Large Language Models (LLMs) to classify user intents. This synthesis allows for the precision and targeted understanding of NLU with the contextual breadth and depth provided by LLMs, delivering a robust and nuanced approach to intent recognition."
+        },
+        {
+            "type": "image",
+            "link": "https://files.readme.io/5c2cbc6-image.png",
+            "caption": "LLM Intent Classification Modal"
+        },
+        {
+            "type": "text",
+            "content": "Key Features"
+        },
+        {
+            "type": "text",
+            "content": "Efficient Agent Building: Unlike traditional models that require extensive datasets for training, our approach necessitates only a handful of sample utterances and an intent description. This streamlined process reduces the workload and accelerates the development of sophisticated conversational agents, enabling teams to focus on refining interactions rather than compiling large datasets."
+        },
+        {
+            "type": "text",
+            "content": "Performance Enhancement: Leveraging LLMs significantly improves intent recognition accuracy, enabling the system to understand and classify a wide array of user intents with minimal ambiguity. This results in more relevant and accurate responses, enhancing user interaction quality."
+        },
+        {
+            "type": "text",
+            "content": "Predictability Through Hybrid Approach: By combining the strengths of LLMs with traditional NLU techniques, this feature offers a balanced and predictable approach to intent classification. This hybrid model ensures reliability in classification while embracing the advanced capabilities of LLMs for context understanding and ambiguity resolution."
+        },
+        {
+            "type": "text",
+            "content": "Customization Flexibility: The system is designed with customization at its core. Developers can modify the prompt wrapper code to perfectly align with their specific use case, allowing for a tailored conversational experience that meets the unique needs of their application."
+        },
+        {
+            "type": "text",
+            "content": "How It Works"
+        },
+        {
+            "type": "text",
+            "content": "Step 1: Initial Intent Classification"
+        },
+        {
+            "type": "text",
+            "content": "Process: The user's utterance is sent to the Natural Language Understanding (NLU) system, requesting classification."
+        },
+        {
+            "type": "text",
+            "content": "Outcome: The NLU returns the most probable intent and its entities, alongside a list of max. 9 alternative intents with confidence scores. This result acts as the \"NLU fallback\" in case subsequent steps encounter issues."
+        },
+        {
+            "type": "text",
+            "content": "Step 2: Metadata Fetching and Prompt Generation"
+        },
+        {
+            "type": "text",
+            "content": "Process: Upon receiving the intents, the system fetches associated intent descriptions for each intent. A custom or default prompt is then generated using the prompt wrapper."
+        },
+        {
+            "type": "text",
+            "content": "Fallback: In case of errors during intent fetching or prompt generation the system resorts to the \"NLU fallback.\""
+        },
+        {
+            "type": "text",
+            "content": "Step 3: Interaction with LLM"
+        },
+        {
+            "type": "text",
+            "content": "Process: The generated prompt is passed with specific metadata settings, including temperature, to the selected AI model."
+        },
+        {
+            "type": "text",
+            "content": "Validation: The LLM response is parsed to confirm if it represents a valid intent name. Failure to identify a valid intent triggers the \"NLU fallback.\""
+        },
+        {
+            "type": "text",
+            "content": "Step 4: Entity Filling and Final Intent Classification"
+        },
+        {
+            "type": "text",
+            "content": "Process: For intents associated with entities, the original utterance is re-evaluated by the NLU, focusing solely on the identified intent to populate the necessary entities."
+        },
+        {
+            "type": "text",
+            "content": "Outcome: The NLU returns the refined intent classification complete with entities, ready for use within the conversational flow."
+        },
+        {
+            "type": "image",
+            "link": "https://files.readme.io/593acd3-image.png",
+            "caption": "Diagram of the Intent Classification System, as a flowchart"
+        }
+    ]
+}

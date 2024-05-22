@@ -8,7 +8,13 @@ import useConversationState from './ConversationState';
 import './App.css';
 
 const ChatApp = () => {
-  const {messages, choices, userSendAction, userUpdateVariables, pressButton} =
+  const {
+    messages,
+    choices,
+    userSendAction,
+    userUpdateVariables,
+    isAwaitingResponse,
+  } =
     useConversationState();
 
   const {article, handleArticleSelect} =
@@ -26,8 +32,7 @@ const ChatApp = () => {
             <ChatBox
               messages={messages}
               choices={choices}
-              pressButton={pressButton}
-              userSendAction={userSendAction}
+              isAwaitingResponse={isAwaitingResponse}
             />
             <InputBox
               userSendAction={userSendAction}
