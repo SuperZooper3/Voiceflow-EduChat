@@ -8,10 +8,11 @@ import useConversationState from './ConversationState';
 import './App.css';
 
 const ChatApp = () => {
-  const {messages, choices, userSendAction, pressButton} =
+  const {messages, choices, userSendAction, userUpdateVariables, pressButton} =
     useConversationState();
 
-  const {article, handleArticleSelect} = useArticleState();
+  const {article, handleArticleSelect} =
+    useArticleState(userSendAction, userUpdateVariables);
 
   return (
     <div className='app-wrapper'>

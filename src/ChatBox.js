@@ -36,16 +36,18 @@ const prepMessageRecieved = (trace) => {
         </div>
       );
     }
-  } else if (trace.type === 'choice') {
-    return null;
-  } else if (trace.type === 'path') {
-    return null;
   } else if (trace.type === 'color_text') {
     return (
       <div className='messageLine' style={{color: trace.payload.color}}>
         {trace.payload.text}
       </div>
     );
+  } else if (
+    trace.type === 'choice' ||
+    trace.type === 'path' ||
+    trace.type === 'suggest_question_buttons'
+  ) {
+    return null;
   } else {
     return (
       <div>

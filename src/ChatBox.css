@@ -47,3 +47,9 @@
     margin-left: 5px;
     border-color: #FFAC2F;
 }
+
+.choice-button:hover {
+    background-color: #d88f22;
+    border-color: #d88f22;
+    color: #ffffff;
+}

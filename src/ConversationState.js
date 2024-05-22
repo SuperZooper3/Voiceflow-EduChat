@@ -1,4 +1,4 @@
-import {vfInteract} from './VoiceflowInteractions';
+import {vfInteract, vfUpdateVariables} from './VoiceflowInteractions';
 import React, {useState} from 'react';
 
 const useConversationState = () => {
@@ -31,6 +31,12 @@ const useConversationState = () => {
         for (const button of message.content.payload?.buttons) {
           addChoice({[button.request.type]: {...button, handler: pressButton}});
         }
+      } else if (message.content.type === 'suggest_question_buttons') {
+        for (const [key, value] of Object.entries(message.content.payload)) {
+          addChoice({
+            [key]: {name: value, handler: pressSuggestedQuestionButton},
+          });
+        }
       }
     }
     setMessages((prevMessages) => [...prevMessages, message]);
@@ -42,6 +48,10 @@ const useConversationState = () => {
 
   const pressButton = (button) => {
     userSendAction(button.name, button.request);
+  };
+
+  const pressSuggestedQuestionButton = (button) => {
+    userSendAction(button.name, {type: 'text', payload: button.name});
   };
 
   // The choices a user can make from buttons or a choice step
@@ -65,7 +75,11 @@ const useConversationState = () => {
     setChoices({});
   };
 
-  return {messages, choices, userSendAction, pressButton};
+  const userUpdateVariables = (variables) => {
+    return vfUpdateVariables(sessionSlug, variables);
+  };
+
+  return {messages, choices, userSendAction, userUpdateVariables, pressButton};
 };
 
 export default useConversationState;

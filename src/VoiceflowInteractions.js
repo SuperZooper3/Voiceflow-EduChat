@@ -19,13 +19,29 @@ const vfInteract = async (user, userAction) => {
   });
 
   const postRes = await data.json();
-  // const botResponses = [];
-  // for (let i = 0; i < postRes.length; i++) {
-  //   if (postRes[i].type === 'text') {
-  //     botResponses.push(postRes[i].payload.message);
-  //   }
-  // }
   return postRes;
 };
 
-export {vfInteract};
+const vfUpdateVariables = async (user, variables) => {
+  const updateVariablesUrl = `https://general-runtime.voiceflow.com/state/user/${user}/variables`;
+
+  const data = await fetch(updateVariablesUrl, {
+    headers: {
+      'Authorization': API_KEY,
+      'accept': 'application/json',
+      'content-type': 'application/json',
+      'versionID': 'production',
+    },
+    method: 'PATCH',
+    body: JSON.stringify(variables),
+  });
+
+  if (!data.ok) {
+    console.error('Failed to update variables', data);
+  }
+
+  const postRes = await data.json();
+  return postRes;
+};
+
+export {vfInteract, vfUpdateVariables};

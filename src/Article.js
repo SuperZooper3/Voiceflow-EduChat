@@ -5,7 +5,7 @@ import articleList from './articleList.json';
 
 const articlePathRoot = './articles/';
 
-const useArticleState = () => {
+const useArticleState = (userSendAction, userUpdateVariables) => {
   const [article, setSelectedArticle] = React.useState(null);
 
   const handleArticleSelect = async (articleId) => {
@@ -14,16 +14,29 @@ const useArticleState = () => {
     const response = await fetch(articlePath);
     const articleData = await response.json();
     setSelectedArticle(articleData);
+    const articleText = articleData.body.map((item) => {
+      if (item.type === 'text') {
+        return item.content;
+      } else if (item.type === 'image') {
+        return item.caption;
+      } else {
+        return '';
+      }
+    }).join('\n');
+    const currentParagraph = articleData.body[0].content;
+    console.log(articleText, currentParagraph);
+    await userUpdateVariables({
+      article_body: articleText,
+      current_paragraphs: currentParagraph});
+    userSendAction(
+        null,
+        {type: 'intent', payload: {intent: {name: 'suggest_buttons'}}},
+    );
   };
 
   const selectFirstArticle = async () => {
     await handleArticleSelect(articleList[0].id);
   };
-
-  // automatically select the first article
-  React.useEffect(() => {
-    selectFirstArticle();
-  }, []);
 
   return {article, handleArticleSelect, selectFirstArticle};
 };
