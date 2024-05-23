@@ -2,6 +2,16 @@
 
 A chatbot app that follows along with student's reading of articles, asks questions and engages in conversation for improved learning coutcomes.
 
+![Screenshot of EduChat](EduChat.jpeg)
+
+## Features
+
+- Load articles in a JSON format into the reader
+- Ask EduChat clarifying questions about the article as well as broader questions, with knowledge sourced from the article and a custom knowledge base
+- Automatically suggest conversation starters to the user based on the article content, to encourage further and engaging with the content.
+
+![EduChat Screenshot 2](EduChat2.png)
+
 ## Setup
 
 - Clone the repository
