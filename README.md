@@ -6,6 +6,8 @@ A chatbot app that follows along with student's reading of articles, asks questi
 
 - Clone the repository
 - Run `npm install` to install dependencies
+- Create a `.env` file with the API key for the Voiceflow project from the integrations tab
+```
+REACT_APP_VF_API_KEY=<API_KEY>
+```
 - Run `npm start` to start the development server
-
-Use `npm run build` to build the app for production.
