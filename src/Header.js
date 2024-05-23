@@ -8,15 +8,16 @@ const Header = ({handleArticleSelect}) => {
     <div className='app-header'>
       <h1 className='header-title'>EduChat</h1>
       <div className='article-select-wrapper'>
-        {articleList.map((article) => (
-          <button
-            className='article-select-button'
-            key={article.id}
-            onClick={() => handleArticleSelect(article.id)}
-          >
-            {article.displayname}
-          </button>
-        ))}
+        <select
+          className='article-select-button'
+          onChange={(event) => handleArticleSelect(event.target.value)}
+        >
+          {articleList.map((article) => (
+            <option key={article.id} value={article.id}>
+              {article.displayname}
+            </option>
+          ))}
+        </select>
       </div>
     </div>
   );
