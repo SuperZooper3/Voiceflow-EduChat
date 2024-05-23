@@ -12,6 +12,7 @@ const Header = ({handleArticleSelect}) => {
           className='article-select-button'
           onChange={(event) => handleArticleSelect(event.target.value)}
         >
+          <option value="">- Choose an article -</option>
           {articleList.map((article) => (
             <option key={article.id} value={article.id}>
               {article.displayname}

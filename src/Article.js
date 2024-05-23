@@ -9,6 +9,9 @@ const useArticleState = (userSendAction, userUpdateVariables) => {
   const [article, setSelectedArticle] = React.useState(null);
 
   const handleArticleSelect = async (articleId) => {
+    if (!articleId) {
+      return;
+    }
     const articleInfo = articleList.find((a) => a.id === articleId);
     const articlePath = articlePathRoot + articleInfo.filename;
     const response = await fetch(articlePath);
