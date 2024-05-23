@@ -6,7 +6,7 @@ import articleList from './articleList.json';
 const Header = ({handleArticleSelect}) => {
   return (
     <div className='app-header'>
-      <h1 className='header-title'>EduChat</h1>
+      <h1 className='header-title'>EduChat on Voiceflow</h1>
       <div className='article-select-wrapper'>
         <select
           className='article-select-button'

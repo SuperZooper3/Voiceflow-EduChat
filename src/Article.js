@@ -46,7 +46,7 @@ const Article = ({article}) => {
   if (!article || !article.body || !article.title) {
     return (
       <div className='article-wrapper'>
-        <h1>Select an article to view</h1>
+        <h1>Select an article to get started</h1>
       </div>
     );
   }
