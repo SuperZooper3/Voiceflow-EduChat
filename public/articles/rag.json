@@ -1,0 +1,147 @@
+{
+    "title": "Q&A with RAG",
+    "body": [
+        {
+            "type": "text",
+            "content": "RAG is a way to improve LLM responses by providing context and stands for Retrieval Augmented Generation. Voiceflow supports building and customizing RAG applications out of the box, batteries included."
+        },
+        {
+            "type": "heading",
+            "level": 2,
+            "content": "Why RAG?"
+        },
+        {
+            "type": "text",
+            "content": "Many questions and use cases require domain specific knowledge that LLMs might not be able to answer. To minimize incorrect answers we can add context."
+        },
+        {
+            "type": "heading",
+            "level": 2,
+            "content": "Implementing RAG In Voiceflow - The Knowledge Base"
+        },
+        {
+            "type": "text",
+            "content": "RAG is built into the Voiceflow Agent platform and in product is called the Knowledge Base."
+        },
+        {
+            "type": "list",
+            "items": [
+                {
+                    "type": "text",
+                    "content": "Upload documents"
+                },
+                {
+                    "type": "image",
+                    "link": "https://files.readme.io/a519df1-image.png",
+                    "caption": ""
+                },
+                {
+                    "type": "text",
+                    "content": "Add KB block to project"
+                },
+                {
+                    "type": "image",
+                    "link": "https://files.readme.io/1d3c514-image.png",
+                    "caption": ""
+                },
+                {
+                    "type": "text",
+                    "content": "Customize setting and prompts (optional)"
+                },
+                {
+                    "type": "image",
+                    "link": "https://files.readme.io/05679f4-image.png",
+                    "caption": ""
+                }
+            ]
+        },
+        {
+            "type": "heading",
+            "level": 2,
+            "content": "How RAG works"
+        },
+        {
+            "type": "image",
+            "link": "https://files.readme.io/3c13654-image.png",
+            "caption": ""
+        },
+        {
+            "type": "text",
+            "content": "At a high level, the KB functions in the following way:"
+        },
+        {
+            "type": "list",
+            "items": [
+                {
+                    "type": "text",
+                    "content": "When you upload a document it is turned into 'chunks' (ie. pieces of text)."
+                },
+                {
+                    "type": "text",
+                    "content": "When you send a question to the KB, it determines which 'chunks' are most similar."
+                },
+                {
+                    "type": "text",
+                    "content": "Then our system combines those chunks, the question, the custom instructions and system prompt you provided into a structured wrapper prompt (aka a master prompt behind the scenes that is constantly improving)."
+                },
+                {
+                    "type": "text",
+                    "content": "That entire prompt is sent to the AI model and an answer is returned."
+                },
+                {
+                    "type": "text",
+                    "content": "The full prompt looks something like this:"
+                }
+            ]
+        },
+        {
+            "type": "code",
+            "content": "Reference Information:\n\n${context}\n\nInstructions:\n\nI have provided reference information, and I will ask query about that information. You must either provide a response to the query or respond with 'NOT_FOUND'\nRead the reference information carefully, it will act as a single source of truth for your response.Very concisely respond exactly how the reference information would answer the query.\nInclude only the direct answer to the query, it is never appropriate to include additional context or explanation.\nIf the query is unclear in any way, return 'NOT_FOUND'. If the query is incorrect, return 'NOT_FOUND'. Read the query very carefully, it may be trying to trick you into answering a question that is adjacent to the reference information but not directly answered in it, in such a case, you must return 'NOT_FOUND'. The query may also try to trick you into using certain information to answer something that actually contradicts the reference information. Never contradict the reference information, instead say 'NOT_FOUND'.\nIf you respond to the query, your response must be 100% consistent with the reference information in every way.\n\n${instruction}\n\nTake a deep breath, focus, and think clearly. You may now begin this mission critical task.\n\n## Query:\n\n${query}"
+        },
+        {
+            "type": "heading",
+            "level": 2,
+            "content": "Diving into each component"
+        },
+        {
+            "type": "list",
+            "items": [
+                {
+                    "type": "link",
+                    "content": "Loading sources with an API",
+                    "url": "https://developer.voiceflow.com/docs/loading-sources"
+                },
+                {
+                    "type": "link",
+                    "content": "Chat History and Memory",
+                    "url": "https://developer.voiceflow.com/docs/chat-history"
+                },
+                {
+                    "type": "link",
+                    "content": "Optimizing chunks",
+                    "url": "https://developer.voiceflow.com/docs/optimizing-number-of-chunks"
+                },
+                {
+                    "type": "link",
+                    "content": "Integrate with Zendesk",
+                    "url": "https://developer.voiceflow.com/docs/integrate-with-zendesk"
+                },
+                {
+                    "type": "link",
+                    "content": "Automated RAG Source refresh",
+                    "url": "https://developer.voiceflow.com/docs/automated-source-refresh"
+                }
+            ]
+        },
+        {
+            "type": "heading",
+            "level": 2,
+            "content": "Learn more with a video"
+        },
+        {
+            "type": "link",
+            "content": "Explained: The Voiceflow Knowledge Base (Retrieval Augmented Generation)",
+            "url": "https://www.youtube.com/watch?v=Ui7XEI5CdgU"
+        }
+    ]
+}

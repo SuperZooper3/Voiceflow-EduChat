@@ -12,5 +12,13 @@
         "id": "llm_intent",
         "displayname": "LLM Intents",
         "filename": "llm_intent.json"
+    }, {
+        "id": "test",
+        "displayname": "Test",
+        "filename": "test.json"
+    }, {
+        "id": "rag",
+        "displayname": "RAG",
+        "filename": "rag.json"
     }
 ]

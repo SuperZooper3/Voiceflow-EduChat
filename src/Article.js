@@ -50,18 +50,62 @@ const Article = ({article}) => {
   return (
     <div className='article-wrapper'>
       <h1>{article.title}</h1>
-      {article.body.map((paragraph, index) => (
-        paragraph.type === 'text' ?
-            <p className="article-text" key={index}>{paragraph.content}</p> :
-        paragraph.type === 'image' ?
-            <img
+      {article.body.map((paragraph, index) => {
+        switch (paragraph.type) {
+          case 'text':
+            return <p
+              className="article-text"
+              key={index}>
+              {paragraph.content
+              }</p>;
+          case 'image':
+            return <img
               className="article-image"
               src={paragraph.link}
               alt={paragraph.caption}
-              key={index}
-            /> :
-        null
-      ))}
+              key={index} />;
+          case 'heading':
+            const HeadingTag = `h${paragraph.level}`;
+            return <HeadingTag key={index}>{paragraph.content}</HeadingTag>;
+          case 'list':
+            return (
+              <ul className="article-list" key={index}>
+                {paragraph.items.map((item, itemIndex) => {
+                  switch (item.type) {
+                    case 'text':
+                      return <li key={itemIndex}>
+                        <p className='article-text'>{item.content}</p>
+                      </li>;
+                    case 'image':
+                      return <img
+                        className="article-image"
+                        src={item.link}
+                        alt={item.caption}
+                        key={itemIndex} />;
+                    case 'link':
+                      return <a href={item.url} key={index}>
+                        <p className='article-text'>{item.content}</p>
+                      </a>;
+                    default:
+                      return <p>{JSON.stringify(item)}</p>;
+                  }
+                })}
+              </ul>
+            );
+          case 'code':
+            return <pre
+              className="article-code"
+              key={index}>
+              {paragraph.content}
+            </pre>;
+          case 'link':
+            return <a href={paragraph.url} key={index}>
+              <p className='article-text'>{paragraph.content}</p>
+            </a>;
+          default:
+            return <p>{JSON.stringify(paragraph)}</p>;
+        }
+      })}
     </div>
   );
 };
