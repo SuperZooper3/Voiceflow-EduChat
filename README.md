@@ -1,6 +1,6 @@
 # Voiceflow EduChat
 
-A chatbot app that follows along with student's reading of articles, asks questions and engages in conversation for improved learning coutcomes.
+This is an AI app built in React. It enhances learning outcomes and interactivity by following along with students' reading of articles, asking questions, and engaging in conversation.
 
 ![Screenshot of EduChat](EduChat.jpeg)
 
