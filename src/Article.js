@@ -17,15 +17,30 @@ const useArticleState = (userSendAction, userUpdateVariables) => {
     const response = await fetch(articlePath);
     const articleData = await response.json();
     setSelectedArticle(articleData);
-    const articleText = articleData.body.map((item) => {
-      if (item.type === 'text') {
+    const articleText = `Title: ${articleData.title}\nBody: ` +
+    articleData.body.map((item) => {
+      if (item.type === 'text' ||
+      item.type === 'heading' ||
+      item.type === 'code' ||
+      item.type === 'link') {
         return item.content;
+      } else if (item.type === 'list') {
+        return item.items.map((listItem) => {
+          if (listItem.type === 'text') {
+            return listItem.content;
+          } else if (listItem.type === 'image') {
+            return `**IMAGE. CAPTION: ${listItem.caption}**`;
+          } else {
+            return '';
+          }
+        }).join('\n');
       } else if (item.type === 'image') {
         return `**IMAGE. CAPTION: ${item.caption}**`;
       } else {
         return '';
       }
     }).join('\n');
+    console.log(articleText);
     await userUpdateVariables({
       article_body: articleText,
     });
