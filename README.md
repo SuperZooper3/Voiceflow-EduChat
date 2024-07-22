@@ -159,3 +159,7 @@ Add a link block with type `"link"`, the display text under `"content"`, and the
     ]
 }
 ```
+
+<a href="https://trackgit.com">
+<img src="https://us-central1-trackgit-analytics.cloudfunctions.net/token/ping/lyx0ytgyfqw0qma2wuhl" alt="trackgit-views" />
+</a>
